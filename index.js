@@ -9,9 +9,23 @@ const users = [
 ]
 
 app.use(cors())
+app.use(express.json())
 app.get('/users', (req, res)=> {
   res.send(users)
 });
+
+app.post ('/users', (req, res)=>{
+
+
+  const newUser = req.body;
+  newUser.id = users.length + 1;
+  users.push(newUser)
+  res.send(newUser)
+
+
+console.log(req.body)
+console.log("post api hitting")
+})
 
 
 app.get('/', (req, res)=>{
